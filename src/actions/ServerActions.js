@@ -6,6 +6,13 @@ const ServerActions = {
       type: 'RECEIVE_ALL',
       payload: data
     })
+  },
+
+  receiveChatroom (data) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_CHATROOM',
+      payload: data
+    })
   }
 }
 

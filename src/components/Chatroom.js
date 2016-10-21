@@ -11,7 +11,7 @@ export default class Chatroom extends Component {
     super()
 
     this.state = {
-      chatrooms: ChatroomStore.getAll()
+      chatroom: ChatroomStore.getChatroom()
     }
 
     this._onChange = this._onChange.bind(this)
@@ -19,7 +19,7 @@ export default class Chatroom extends Component {
 
   componentWillMount () {
     ChatroomStore.on('CHANGE', this._onChange)
-    ChatroomActions.getAll()
+    ChatroomActions.getChatroom(this.props.params.id)
   }
 
   componentWillUnmount () {
@@ -28,18 +28,30 @@ export default class Chatroom extends Component {
 
   _onChange () {
     this.setState({
-      chatrooms: ChatroomStore.getAll()
+      chatroom: ChatroomStore.getChatroom()
     })
   }
 
+  _newMessage (e) {
+    e.preventDefault()
+
+    let newMessage = {
+      body: e.target.newMessage.value.toString(),
+      author: e.target.author.value.toString()
+    }
+
+    ChatroomActions.addMessage(this.props.params.id, newMessage)
+  }
+
   render () {
-    console.log('this.state.chatrooms: ', this.state.chatrooms)
+    console.log('this.state.chatroom: ', this.state.chatroom.messages)
 
     return (
       <div>
-        <MessageList {...this.state} />
-        <form onSubmit="">
-          <input type="text" />
+        <MessageList {...this.state.chatroom} />
+        <form onSubmit={(e) => this._newMessage(e)}>
+          <input id="newMessage" type="text" placeholder="message" />
+          <input id="author" type="text" placeholder="author" />
           <button type="submit">Send Message</button>
         </form>
       </div>

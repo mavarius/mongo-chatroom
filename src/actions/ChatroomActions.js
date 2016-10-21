@@ -4,6 +4,18 @@ import API from '../API'
 const ChatroomActions = {
   getAll () {
     API.getAll()
+  },
+
+  getChatroom (id) {
+    API.getChatroom(id)
+  },
+
+  addChatroom (newRoom) {
+    API.addChatroom(newRoom)
+  },
+
+  addMessage (id, newMessage) {
+    API.addMessage(id, newMessage)
   }
 }
 

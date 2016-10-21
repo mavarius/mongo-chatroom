@@ -4,6 +4,11 @@ const router = express.Router()
 const Chatroom = require('../models/Chatroom')
 
 router.route('/messages/:id')
+  .get((req, res) => {
+    Chatroom.findById(req.params.id)
+      .then(chatroom => res.send(chatroom))
+      .catch(err => res.status(400).send(err))
+  })
   .put((req, res) => {
     Chatroom.findById(req.params.id)
       .then(chatroom => {
@@ -38,7 +43,7 @@ router.route('/')
   })
   .post((req, res) => {
     Chatroom.create(req.body)
-      .then(chatroom => res.send(chatroom))
+      .then(chatrooms => res.send(chatrooms))
       .catch(err => res.status(400).send(err))
   })
 

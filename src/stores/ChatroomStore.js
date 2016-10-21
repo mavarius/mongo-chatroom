@@ -3,6 +3,8 @@ import AppDispatcher from '../AppDispatcher'
 
 let _chatrooms = []
 
+let _currentRoom = {}
+
 class ChatroomStore extends EventEmitter {
   constructor () {
     super()
@@ -13,12 +15,20 @@ class ChatroomStore extends EventEmitter {
           _chatrooms = action.payload
           this.emit('CHANGE')
           break
+        case 'RECEIVE_CHATROOM':
+          _currentRoom = action.payload
+          this.emit('CHANGE')
+          break
       }
     })
   }
 
   getAll () {
     return _chatrooms
+  }
+
+  getChatroom () {
+    return _currentRoom
   }
 
 }
