@@ -3,10 +3,23 @@ const router = express.Router()
 
 const Chatroom = require('../models/Chatroom')
 
+// router.route('/tester')
+//   .get((req, res) => {
+//     req.io.emit('action', {
+//       type: 'RECEIVE_MESSAGE',
+//       payload: 'data'
+//     })
+//   })
+
 router.route('/messages/:id')
   .get((req, res) => {
     Chatroom.findById(req.params.id)
-      .then(chatroom => res.send(chatroom))
+      .then(chatroom => {
+        req.io.emit('action', {
+          type: 'RECEIVE_CHATROOM',
+          payload: chatroom
+        })
+      })
       .catch(err => res.status(400).send(err))
   })
   .put((req, res) => {
@@ -15,7 +28,12 @@ router.route('/messages/:id')
         chatroom.messages.push(req.body)
         return chatroom.save()
       })
-      .then(updatedChat => res.send(updatedChat))
+      .then(updatedChat => {
+        req.io.emit('action', {
+          type: 'RECEIVE_CHATROOM',
+          payload: updatedChat
+        })
+      })
       .catch(err => res.status(400).send(err))
   })
 
@@ -38,12 +56,22 @@ router.route('/rooms')
 router.route('/')
   .get((req, res) => {
     Chatroom.find({})
-      .then(chatrooms => res.send(chatrooms))
+      .then(chatrooms => {
+        req.io.emit('action', {
+          type: 'RECEIVE_ALL',
+          payload: chatrooms
+        })
+      })
       .catch(err => res.status(400).send(err))
   })
   .post((req, res) => {
     Chatroom.create(req.body)
-      .then(chatrooms => res.send(chatrooms))
+      .then(chatrooms => {
+        req.io.emit('action', {
+          type: 'RECEIVE_ALL',
+          payload: chatrooms
+        })
+      })
       .catch(err => res.status(400).send(err))
   })
 

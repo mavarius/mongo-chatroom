@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+// import socket from '../socket-init'
+
 import ChatroomStore from '../stores/ChatroomStore'
 import ChatroomActions from '../actions/ChatroomActions'
 
@@ -46,16 +48,22 @@ export default class HomePage extends Component {
 
   render () {
     return (
-      <div>
-        <div className="row">
+      <div className="row">
+        <div className="row newRoom">
           <form onSubmit={(e) => this._addNewChatroom(e)}>
-            <input id="roomName" type="text" placeholder="room name" />
-            <input id="description" type="text" placeholder="description" />
-            <button type="submit">Add New Chatroom</button>
+            <div className="col-xs-12 col-sm-6 col-md-3">
+              <input id="roomName" type="text" placeholder="room name" />
+            </div>
+            <div className="col-xs-12 col-sm-6 col-md-7">
+              <input id="description" type="text" placeholder="description" />
+            </div>
+            <div className="col-xs-12 col-sm-6 col-md-2">
+              <button type="submit" className="darkBtn">add new room</button>
+            </div>
           </form>
         </div>
 
-        <div className="row">
+        <div className="row roomList">
           <ChatroomList {...this.state} />
         </div>
 

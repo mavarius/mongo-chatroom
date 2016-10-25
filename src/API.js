@@ -1,11 +1,12 @@
 import { get, post, put } from 'axios'
-import ServerActions from './actions/ServerActions'
+// import ServerActions from './actions/ServerActions'
 
 const API = {
   getAll () {
     get('/api/chatrooms')
       .then(res => {
-        ServerActions.receiveAll(res.data)
+        // console.log('res.data: ', res.data)
+        // ServerActions.receiveAll(res.data)
       })
       .catch(console.error)
   },
@@ -13,13 +14,13 @@ const API = {
   getChatroom (id) {
     get(`/api/chatrooms/messages/${id}`)
       .then(res => {
-        ServerActions.receiveChatroom(res.data)
+        // ServerActions.receiveChatroom(res.data)
       })
       .catch(console.error)
   },
 
   addChatroom (newRoom) {
-    post(`/api/chatrooms/`, newRoom)
+    post('/api/chatrooms/', newRoom)
       .then(res => {
         // console.log('res.data: ', res.data)
         // ServerActions.receiveChatroom(res.data)
@@ -30,7 +31,7 @@ const API = {
   addMessage (id, newMessage) {
     put(`/api/chatrooms/messages/${id}`, newMessage)
       .then(res => {
-        ServerActions.receiveChatroom(res.data)
+        // ServerActions.receiveChatroom(res.data)
       })
       .catch(console.error)
   }

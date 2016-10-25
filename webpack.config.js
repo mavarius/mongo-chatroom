@@ -30,6 +30,10 @@ module.exports = {
           presets: ['es2015', 'react']
         }
       },
+      {
+        loader: 'url-loader?limit=10000',
+        test: /\.(png|jpg|jpeg|gif|woff)$/
+      },
       { test: /(\.css)$/, loaders: ['style', 'css'] }
     ]
   }

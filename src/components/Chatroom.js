@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import moment from 'moment'
 
 import ChatroomStore from '../stores/ChatroomStore'
@@ -47,7 +48,10 @@ export default class Chatroom extends Component {
     console.log('this.state.chatroom: ', this.state.chatroom.messages)
 
     return (
-      <div>
+      <div className="row">
+        <div className="row">
+          <Link className="menuItem col-xs-12 col-sm-12 col-md-12" to="/">back to chatroom index</Link>
+        </div>
         <MessageList {...this.state.chatroom} />
         <form onSubmit={(e) => this._newMessage(e)}>
           <input id="newMessage" type="text" placeholder="message" />

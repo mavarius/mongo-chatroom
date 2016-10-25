@@ -5,6 +5,8 @@ let _chatrooms = []
 
 let _currentRoom = {}
 
+let _messages = []
+
 class ChatroomStore extends EventEmitter {
   constructor () {
     super()
@@ -17,6 +19,12 @@ class ChatroomStore extends EventEmitter {
           break
         case 'RECEIVE_CHATROOM':
           _currentRoom = action.payload
+          console.log('_currentRoom: ', _currentRoom)
+          this.emit('CHANGE')
+          break
+        case 'RECEIVE_MESSAGE':
+          _messages.push(action.payload)
+          console.log('_messages: ', _messages)
           this.emit('CHANGE')
           break
       }

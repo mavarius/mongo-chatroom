@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 
 export default class Layout extends Component {
   render () {
@@ -9,10 +8,13 @@ export default class Layout extends Component {
 
     return (
       <div>
-        {/* <div className="backgroundImage" style={randomBackground}></div> */}
+        <div className="backgroundImage"></div>
         <div className="container">
           <div className="row">
-            <Link to="/" className="appTitle" onlyActiveOnIndex><h1>Mongo Chatroom</h1></Link>
+            <h1 className="appTitle">CYBERPUNKS</h1>
+          </div>
+          <div className="row">
+            <h3 className="appSubtitle col-xs-12 col-sm-6 col-md-10">Chatrooms for Sci-Fi RPs</h3>
           </div>
           <div className="row">
             {this.props.children}

@@ -1,0 +1,129 @@
+body {
+  background-color: black;
+  font-family: 'Cutive Mono', monospace;;
+}
+
+.backgroundImage {
+  background-image: url('../images/neonCityPattern.png');
+  background-attachment: scroll;
+  /*opacity: 0.5;*/
+  position: fixed;
+  height: 20vh;
+  width: 100vw;
+  z-index: 1;
+  left: 0;
+  top: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 50;
+}
+
+.appTitle, .appSubtitle {
+  text-align: left;
+  color: black;
+  position: relative;
+  /*background-color: rgba(10, 10, 10, 1);*/
+}
+
+.appTitle {
+  font-family: 'Audiowide';
+  margin-top: 20vh;
+  font-size: 4em;
+  top: -50px;
+  /*text-shadow: 0.5px 0.5px 2px #DB77D6,
+               -0.5px -0.5px 2px #75FEDD,
+               0 0 2px rgba(255, 255, 255, 1);*/
+}
+
+.appSubtitle {
+  color: #982846;
+  top: -65px;
+  line-height: 0;
+}
+
+.menuItem {
+  text-align: right;
+  display: inline;
+}
+
+.darkBtn {
+  font-family: 'Audiowide';
+  color: #032B67;
+  font-size: 1.2em;
+  background-color: rgba(10, 10, 10, 0.5);
+  border: none;
+  border-bottom: 1px solid white;
+  transition: 0.5s all;
+  height: 30px;
+  width: 100%;
+}
+
+.darkBtn:hover {
+  color: black;
+  text-shadow: 0.5px 0.5px 2px #DB77D6,
+               -0.5px -0.5px 2px #75FEDD,
+               0 0 2px rgba(255, 255, 255, 1);
+  transition: 0.5s all;
+}
+
+.newRoom {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.newRoom input {
+  background-color: rgba(10, 10, 10, 0.5);
+  border: none;
+  border-bottom: 1px solid white;
+  width: 100%;
+  height: 30px;
+  padding-left: 20px;
+  transition: 0.5s all;
+}
+
+.newRoom input:hover, .newRoom input:focus {
+  background-color: rgba(10, 10, 10, 1);
+  transition: 0.5s all;
+}
+
+.roomListing {
+  background-color: rgba(10, 10, 10, 0.5);
+  border: 1px solid #032B67;
+  margin-bottom: 20px;
+  height: 70px;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+
+.postCount {
+  color: black;
+  background-color: #032B67;
+  width: 69px;
+  height: 100%;
+  position: relative;
+  vertical-align: middle;
+  float: left;
+  margin-right: 20px;
+  font-size: 1.2em;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.roomName {
+ color: #982846;
+}
+
+.roomDescription {
+  color: #3364AF;
+}
+
+.roomListing:hover {
+  color: black;
+  background-color: rgba(10, 10, 10, 1);
+  transition: 0.5s all;
+}
